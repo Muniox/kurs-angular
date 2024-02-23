@@ -1,5 +1,5 @@
 {
-  "name": "02-fetching-data-and-conditional-render",
+  "name": "03-crud-and-services-basics",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+    "@ng-icons/core": "^27.1.0",
+    "@ng-icons/feather-icons": "^27.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
