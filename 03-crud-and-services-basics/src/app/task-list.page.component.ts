@@ -1,38 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TasksListComponent } from './tasks-list.component';
 import { SubmitTextComponent } from './submit-text.component';
 import { Task } from './Task';
 import { NgIf } from '@angular/common';
-
-type ListFetchingError = { status: number; message: string };
-
-// idle - initial
-type IdleState = {
-  state: 'idle';
-};
-// loading
-type LoadingState = {
-  state: 'loading';
-};
-// success
-type SuccessState = {
-  state: 'success';
-  results: Task[];
-};
-// error
-type ErrorState = {
-  state: 'error';
-  error: ListFetchingError;
-};
-
-type ComponentListState = IdleState | LoadingState | SuccessState | ErrorState;
+import { TasksService } from './tasks.service';
+import { ComponentListState } from './list-state.type';
 
 @Component({
   selector: 'app-task-list-page',
   standalone: true,
   imports: [TasksListComponent, SubmitTextComponent, NgIf],
   template: `
-    <app-submit-text (submitText)="addTask($event)" />
+    <app-submit-text
+      (submitText)="
+        listState.state === 'success' && addTask($event, listState.results)
+      "
+    />
     <app-tasks-list
       *ngIf="listState.state === 'success'"
       class="block mt-4"
@@ -42,42 +25,39 @@ type ComponentListState = IdleState | LoadingState | SuccessState | ErrorState;
     <p *ngIf="listState.state === 'loading'">Loading...</p>
   `,
 })
-export class TaskListPageComponent {
-  listState: ComponentListState = { state: 'idle' };
+export class TaskListPageComponent implements OnInit {
+  listState: ComponentListState<Task[]> = { state: 'idle' };
 
-  private readonly URL = 'http://localhost:3000';
+  // constructor(@Inject(TasksService) private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService) {}
 
-  constructor() {
+  ngOnInit() {
     this.listState = { state: 'loading' };
-    fetch(`${this.URL}/tasks`)
-      .then<Task[] | ListFetchingError>((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-
-        return { status: response.status, message: response.statusText };
-      })
-      .then((response) => {
-        setTimeout(() => {
-          if (Array.isArray(response)) {
-            this.listState = {
-              state: 'success',
-              results: response,
-            };
-          } else {
-            this.listState = {
-              state: 'error',
-              error: response,
-            };
-          }
-        }, 1200);
-      });
+    this.tasksService.getAll().then((response) => {
+      if (Array.isArray(response)) {
+        this.listState = {
+          state: 'success',
+          results: response,
+        };
+      } else {
+        this.listState = {
+          state: 'error',
+          error: response,
+        };
+      }
+    });
   }
 
-  addTask(name: string) {
-    // this.listState.push({
-    //   name,
-    //   done: false,
-    // });
+  addTask(name: string, tasks: Task[]) {
+    this.tasksService.add(name).then((response) => {
+      if ('id' in response) {
+        this.listState = {
+          state: 'success',
+          results: [...tasks, response],
+        };
+      } else {
+        alert(response.message);
+      }
+    });
   }
 }

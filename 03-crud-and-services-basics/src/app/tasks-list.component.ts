@@ -5,6 +5,7 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherCalendar } from '@ng-icons/feather-icons';
 import { RemoveItemButtonComponent } from './remove-item-button.component';
 import { AutosizeTextareaComponent } from './autosize-textarea.component';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -30,12 +31,13 @@ import { AutosizeTextareaComponent } from './autosize-textarea.component';
             (dblclick)="switchToEditMode()"
           >
             <header class="flex justify-end">
-              <app-remove-item-button />
+              <app-remove-item-button (confirm)="delete(task.id)" />
             </header>
             <section class="text-left">
               <app-autosize-textarea
                 *ngIf="editMode; else previewModeTemplate"
                 (keyup.escape)="editMode = false"
+                (submitText)="updateTask(task.id, $event)"
                 [value]="task.name"
               />
 
@@ -60,8 +62,17 @@ export class TasksListComponent {
 
   removeMode = false;
   editMode = false;
-
   isSingleClick = true;
+
+  constructor(private tasksService: TasksService) {}
+
+  delete(taskId: number) {
+    this.tasksService.delete(taskId);
+  }
+
+  updateTask(taskId: number, name: string) {
+    this.tasksService.update(taskId, name);
+  }
 
   handleSingleClick(task: Task) {
     this.isSingleClick = true;
