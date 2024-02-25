@@ -1,0 +1,174 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "@angular/animations": "^17.2.0",
+    "@angular/common": "^17.2.0",
+    "@angular/compiler": "^17.2.0",
+    "@angular/core": "^17.2.0",
+    "@angular/forms": "^17.2.0",
+    "@angular/platform-browser": "^17.2.0",
+    "@angular/platform-browser-dynamic": "^17.2.0",
+    "@angular/router": "^17.2.0",
+    "@ng-icons/core": "^27.1.0",
+    "@ng-icons/feather-icons": "^27.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3",
+    "@angular-devkit/build-angular": "^17.2.0",
+    "@angular-eslint/builder": "17.2.1",
+    "@angular-eslint/eslint-plugin": "17.2.1",
+    "@angular-eslint/eslint-plugin-template": "17.2.1",
+    "@angular-eslint/schematics": "17.2.1",
+    "@angular-eslint/template-parser": "17.2.1",
+    "@angular/cli": "^17.2.0",
+    "@angular/compiler-cli": "^17.2.0",
+    "@typescript-eslint/eslint-plugin": "6.19.0",
+    "@typescript-eslint/parser": "6.19.0",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "json-server": "^1.0.0-alpha.23",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
+    "prettier-eslint": "^16.3.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "~5.3.2"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".eslintrc.json",
+        "hash": "13208160633844451952"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "4689145951703824387"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "1405511431251118388"
+      },
+      {
+        "file": ".prettierrc.json",
+        "hash": "4623371635612795521"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "11934160580685414355"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "16152959541739016562"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "16628724667810996389"
+      },
+      {
+        "file": "README.md",
+        "hash": "11303926947871756029"
+      },
+      {
+        "file": "angular.json",
+        "hash": "18208440857699304425"
+      },
+      {
+        "file": "db.json",
+        "hash": "8587138295903251840"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "15338466503664169332"
+      },
+      {
+        "file": "package.json",
+        "hash": "4023006023066898332"
+      },
+      {
+        "file": "src/app/Task.ts",
+        "hash": "12471716877685705233"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "5614951652737181228"
+      },
+      {
+        "file": "src/app/app.config.ts",
+        "hash": "11713316320723186868"
+      },
+      {
+        "file": "src/app/app.routes.ts",
+        "hash": "12397496131277534773"
+      },
+      {
+        "file": "src/app/autosize-textarea.component.ts",
+        "hash": "13896641069795664683"
+      },
+      {
+        "file": "src/app/list-state.type.ts",
+        "hash": "17054260316010376682"
+      },
+      {
+        "file": "src/app/remove-item-button.component.ts",
+        "hash": "13337980294458970282"
+      },
+      {
+        "file": "src/app/submit-text.component.ts",
+        "hash": "11892690900182781175"
+      },
+      {
+        "file": "src/app/task-list.page.component.ts",
+        "hash": "1926449462632273375"
+      },
+      {
+        "file": "src/app/tasks-list.component.ts",
+        "hash": "843943559278150262"
+      },
+      {
+        "file": "src/app/tasks.service.ts",
+        "hash": "7817129194442527234"
+      },
+      {
+        "file": "src/app/wait.ts",
+        "hash": "3528372086942496930"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/favicon.ico",
+        "hash": "3988961587069885523"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "6138706040632616243"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "732663438483983849"
+      },
+      {
+        "file": "src/styles.scss",
+        "hash": "12146659301600472606"
+      },
+      {
+        "file": "tailwind.config.js",
+        "hash": "17181662383819001367"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "13119632651406065538"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "3343339550490537441"
+      }
+    ]
+  }
+}
