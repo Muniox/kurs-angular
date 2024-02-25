@@ -1,40 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Task } from './Task';
-import { ListFetchingError } from './list-state.type';
-import { wait } from './wait';
-
-// const URL = 'http://localhost:3000';
-
-// export async function getTasks() {
-//   await wait();
-//   return fetch(`${URL}/tasks`).then<Task[] | ListFetchingError>((response) => {
-//     if (response.ok) {
-//       return response.json();
-//     }
-
-//     return { status: response.status, message: response.statusText };
-//   });
-// }
-
-// export async function addTasks(name: string) {
-//   await wait();
-//   return fetch(`${URL}/tasks`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       createdAt: new Date().getTime(),
-//       name,
-//       done: false,
-//     } as Task),
-//   });
-// }
-
-// export const tasksService = {
-//   getTasks,
-//   addTasks,
-// };
+import { TaskType } from '../model/task.type';
+import { ListFetchingError } from '../../utils/list-state.type';
+import { wait } from '../../utils/wait';
 
 @Injectable({
   providedIn: 'root',
@@ -43,11 +10,11 @@ export class TasksService {
   private readonly URL = 'http://localhost:3000';
 
   async delete(taskId: number) {
-    fetch(`${this.URL}/tasks/${taskId}`, {
+    return fetch(`${this.URL}/tasks/${taskId}`, {
       method: 'DELETE',
     }).then<Error | undefined>((response) => {
       if (!response.ok) {
-        return new Error('Cant add Task');
+        return new Error('Cant add TaskType');
       }
       return response.json();
     });
@@ -60,9 +27,9 @@ export class TasksService {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name }),
-    }).then<Task | Error>((response) => {
+    }).then<TaskType | Error>((response) => {
       if (!response.ok) {
-        return new Error('Cant update Task');
+        return new Error('Cant update TaskType');
       }
       return response.json();
     });
@@ -70,7 +37,7 @@ export class TasksService {
 
   async getAll() {
     await wait();
-    return fetch(`${this.URL}/tasks`).then<Task[] | ListFetchingError>(
+    return fetch(`${this.URL}/tasks`).then<TaskType[] | ListFetchingError>(
       (response) => {
         if (response.ok) {
           return response.json();
@@ -92,10 +59,10 @@ export class TasksService {
         createdAt: new Date().getTime(),
         name,
         done: false,
-      } as Task),
-    }).then<Task | Error>((response) => {
+      } as TaskType),
+    }).then<TaskType | Error>((response) => {
       if (!response.ok) {
-        return new Error('Cant add Task');
+        return new Error('Cant add TaskType');
       }
       return response.json();
     });

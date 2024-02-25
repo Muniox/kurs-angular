@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { Task } from './Task';
+import { TaskType } from '../model/task.type';
 import { NgFor, NgIf } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherCalendar } from '@ng-icons/feather-icons';
-import { RemoveItemButtonComponent } from './remove-item-button.component';
-import { AutosizeTextareaComponent } from './autosize-textarea.component';
-import { TasksService } from './tasks.service';
+import { RemoveItemButtonComponent } from '@ui/remove-item-button.component';
+import { AutosizeTextareaComponent } from '@ui/autosize-textarea.component';
+import { TasksService } from '../data-access/tasks.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -58,7 +58,7 @@ import { TasksService } from './tasks.service';
   styles: [],
 })
 export class TasksListComponent {
-  @Input({ required: true }) tasks: Task[] = [];
+  @Input({ required: true }) tasks: TaskType[] = [];
 
   removeMode = false;
   editMode = false;
@@ -74,7 +74,7 @@ export class TasksListComponent {
     await this.tasksService.update(taskId, name);
   }
 
-  handleSingleClick(task: Task) {
+  handleSingleClick(task: TaskType) {
     this.isSingleClick = true;
 
     setTimeout(() => {
@@ -89,7 +89,7 @@ export class TasksListComponent {
     this.editMode = true;
   }
 
-  toggleDoneStatus(task: Task) {
+  toggleDoneStatus(task: TaskType) {
     task.done = !task.done;
   }
 }

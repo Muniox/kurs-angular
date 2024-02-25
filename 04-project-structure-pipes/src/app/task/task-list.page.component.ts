@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TasksListComponent } from './tasks-list.component';
-import { SubmitTextComponent } from './submit-text.component';
-import { Task } from './Task';
+import { TasksListComponent } from './ui/tasks-list.component';
+import { SubmitTextComponent } from '@ui/submit-text.component';
+import { TaskType } from './model/task.type';
 import { NgIf } from '@angular/common';
-import { TasksService } from './tasks.service';
-import { ComponentListState } from './list-state.type';
+import { TasksService } from './data-access/tasks.service';
+import { ComponentListState } from '../utils/list-state.type';
 
 @Component({
   selector: 'app-task-list-page',
@@ -26,7 +26,7 @@ import { ComponentListState } from './list-state.type';
   `,
 })
 export class TaskListPageComponent implements OnInit {
-  listState: ComponentListState<Task[]> = { state: 'idle' };
+  listState: ComponentListState<TaskType[]> = { state: 'idle' };
 
   // constructor(@Inject(TasksService) private tasksService: TasksService) {}
   constructor(private tasksService: TasksService) {}
@@ -48,7 +48,7 @@ export class TaskListPageComponent implements OnInit {
     });
   }
 
-  addTask(name: string, tasks: Task[]) {
+  addTask(name: string, tasks: TaskType[]) {
     this.tasksService.add(name).then((response) => {
       if ('id' in response) {
         this.listState = {

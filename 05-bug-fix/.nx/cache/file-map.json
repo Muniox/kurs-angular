@@ -87,7 +87,7 @@
         },
         {
           "file": "package-lock.json",
-          "hash": "15338466503664169332"
+          "hash": "3651105979116288799"
         },
         {
           "file": "package.json",
@@ -142,7 +142,7 @@
         },
         {
           "file": "src/app/task/data-access/tasks.service.ts",
-          "hash": "7546876008299068332"
+          "hash": "7791151304414840358"
         },
         {
           "file": "src/app/task/model/task.type.ts",
