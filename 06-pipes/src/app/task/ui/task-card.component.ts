@@ -5,6 +5,7 @@ import { AutosizeTextareaComponent } from '@ui/autosize-textarea.component';
 import { NgIconComponent } from '@ng-icons/core';
 import { NgIf } from '@angular/common';
 import { TaskUpdatePayload } from '../data-access/tasks.service';
+import { CustomDatePipe } from '../../../app/utils/pipes/custom-date.pipes';
 
 @Component({
   selector: 'app-task-card',
@@ -14,6 +15,7 @@ import { TaskUpdatePayload } from '../data-access/tasks.service';
     AutosizeTextareaComponent,
     NgIconComponent,
     NgIf,
+    CustomDatePipe,
   ],
   template: `
     <div
@@ -43,7 +45,11 @@ import { TaskUpdatePayload } from '../data-access/tasks.service';
           </ng-template>
         </section>
         <footer class=" pt-2 flex items-center justify-end">
-          <ng-icon name="featherCalendar" class="text-sm" />
+          <ng-icon
+            [title]="task.createdAt | customDate"
+            name="featherCalendar"
+            class="text-sm"
+          />
         </footer>
       </button>
     </div>

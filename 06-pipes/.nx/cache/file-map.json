@@ -83,7 +83,7 @@
       },
       {
         "file": "db.json",
-        "hash": "3931121037813977587"
+        "hash": "17496138435465349272"
       },
       {
         "file": "package-lock.json",
@@ -107,7 +107,7 @@
       },
       {
         "file": "src/app/task/data-access/tasks.service.ts",
-        "hash": "7791151304414840358"
+        "hash": "17264691785611272679"
       },
       {
         "file": "src/app/task/model/task.type.ts",
@@ -118,8 +118,12 @@
         "hash": "3744428080960590235"
       },
       {
+        "file": "src/app/task/ui/task-card.component.ts",
+        "hash": "11845386672626180940"
+      },
+      {
         "file": "src/app/task/ui/tasks-list.component.ts",
-        "hash": "12522061033300664226"
+        "hash": "12315530798095277572"
       },
       {
         "file": "src/app/ui/autosize-textarea.component.ts",
