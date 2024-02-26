@@ -3,6 +3,8 @@ import { TaskType } from '../model/task.type';
 import { ListFetchingError } from '../../utils/list-state.type';
 import { wait } from '../../utils/wait';
 
+export type TaskUpdatePayload = { done?: boolean; name?: string };
+
 @Injectable({
   providedIn: 'root',
 })
@@ -20,13 +22,13 @@ export class TasksService {
     });
   }
 
-  async update(taskId: number, name: string) {
+  async update(taskId: number, payload: TaskUpdatePayload) {
     return fetch(`${this.URL}/tasks/${taskId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name }),
+      body: JSON.stringify(payload),
     }).then<TaskType | Error>((response) => {
       if (!response.ok) {
         return new Error('Cant update TaskType');
